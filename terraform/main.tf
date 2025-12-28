@@ -12,6 +12,11 @@ terraform {
     }
   }
 }
+provider "azurerm" {
+  features {
+  }
+  subscription_id = var.subscription
+  } 
 
 module "azurerm_key_vault" {
   source = "./modules/security"

@@ -16,3 +16,9 @@ variable "spobject_id" {
 variable "subscription_id" {
     type = string
 }
+variable "acr_name" {
+    type = string
+}
+variable "acr_sku" {
+    type = string
+}

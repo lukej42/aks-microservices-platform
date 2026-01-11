@@ -12,6 +12,12 @@ obj/
 *.cache
 *.log
 
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+crash.log
+
 # User-specific files
 *.user
 *.userosscache

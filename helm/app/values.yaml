@@ -1,5 +1,5 @@
 image:
-  repository: dockerluke.azurecr.io/myapp
+  repository: example654.azurecr.io/myapp
   tag: "1.0"
   pullPolicy: IfNotPresent
 

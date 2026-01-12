@@ -54,6 +54,8 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
+    - checkout: self
+
     - task: AzureCLI@2
       displayName: Deploy Helm Chart to AKS
       inputs:
@@ -62,18 +64,20 @@ stages:
         scriptLocation: 'inlineScript'
         inlineScript: |
           set -e
-          
+
           echo "Getting AKS credentials..."
           az aks get-credentials \
             --resource-group $(aksResourceGroup) \
             --name $(aksClusterName) \
             --overwrite-existing
-          
+
           echo "Deploying Helm chart..."
-          helm upgrade --install $(helmReleaseName) $(helmChartPath) \
+          helm upgrade --install $(helmReleaseName) \
+            $(System.DefaultWorkingDirectory)/$(helmChartPath) \
             --set image.repository=$(containerRegistry)/$(imageRepository) \
             --set image.tag=$(tag) \
             --wait
-          
+
           echo "Waiting for rollout..."
           kubectl rollout status deployment/$(helmReleaseName)
+

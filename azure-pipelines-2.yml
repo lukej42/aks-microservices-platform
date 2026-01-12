@@ -18,7 +18,7 @@ variables:
   aksResourceGroup: 'terraform-dev'
   aksClusterName: 'demo-aks'
   helmReleaseName: 'lgexample'
-  helmChartPath: 'helm/lgexample'
+  helmChartPath: 'helm/app'
 
   # Agent
   vmImageName: 'ubuntu-latest'
